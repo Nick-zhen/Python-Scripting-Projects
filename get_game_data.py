@@ -19,6 +19,10 @@ def find_all_game_paths(source):
 
     return game_paths
 
+def create_dir(path):
+    if not os.path.exists(path):
+        os.mkdir(path)
+
 def main(source, target):
     # use path.join beause you are not sure what OS you are running. Different OS use different path divider
     cwd = os.getcwd()
@@ -26,7 +30,8 @@ def main(source, target):
     target_path = os.path.join(cwd, target)
 
     game_paths = find_all_game_paths(source_path)
-    print(game_paths)
+    
+    create_dir(target_path)
 
 if __name__ == "__main__":
     args = sys.argv
